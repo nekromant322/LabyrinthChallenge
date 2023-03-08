@@ -21,11 +21,23 @@ public class GameState {
      * @return Двумерный массив с игровым полем
      */
     public int[][] getMap() {
-        return this.map.clone();
+        return copy(map);
+    }
+
+    public static int[][] copy(int[][] src) {
+        if (src == null) {
+            return null;
+        }
+
+        int[][] copy = new int[src.length][];
+        for (int i = 0; i < src.length; i++) {
+            copy[i] = src[i].clone();
+        }
+
+        return copy;
     }
 
     /**
-     *
      * @return Кол-во тиков до конца игры
      */
     public int getRoundsToEnd() {
